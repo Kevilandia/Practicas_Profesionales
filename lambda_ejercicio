@@ -1,0 +1,103 @@
+
+
+'''Funciones Lambda:
+Ejercicio 4:
+Problema de Organización de Datos Empresariales:
+Imagina que trabajas en una empresa internacional con equipos distribuidos en 
+diferentes países. Cada equipo tiene una lista de empleados, representados 
+como diccionarios, con información sobre el nombre, la edad y el rendimiento 
+en proyectos recientes.
+Tu tarea es organizar una lista consolidada de todos los empleados de la 
+empresa. La organización debe seguir ciertas reglas:
+ Los empleados se deben ordenar por el rendimiento en proyectos recientes 
+de forma descendente.
+ Para aquellos con el mismo rendimiento, se deben ordenar por edad de 
+forma ascendente. Además, deseas agrupar a los empleados por país para 
+un análisis más efectivo. Utiliza funciones lambda.
+A continuacion un ejemplo de una posible entrada y salida de la solucion
+'''
+
+'''from itertools import groupby
+def ordenar_empleados(empleados):
+
+    empleados_ordenados = list(sorted(empleados,key =lambda e:(e["pais"] ,-e["rendimiento"] ,e["edad"])))
+    return empleados_ordenados
+
+def ordenar_x_pais(empleados_ordenados):
+    empleados_agrupados={pais:list(grupo_empleados)for pais,grupo_empleados in groupby(empleados_ordenados,key=lambda p:p["pais"])}
+    return empleados_agrupados
+
+def imprimiendo_empleados(empleados_agrupados):
+    for pais,grupo_empleados in empleados_agrupados.items():
+        print(f"Pais: {pais}")
+        for empleado in grupo_empleados:
+            print(empleado)
+
+empleados = [
+    {"nombre": "Ana",     "edad": 28, "rendimiento": 85, "pais": "Uruguay"},
+    {"nombre": "Marta",   "edad": 25, "rendimiento": 78, "pais": "Uruguay"},
+    {"nombre": "Lucía",   "edad": 45, "rendimiento": 95, "pais": "Uruguay"},
+    {"nombre": "Valeria", "edad": 33, "rendimiento": 92, "pais": "Uruguay"},
+    {"nombre": "Luis",    "edad": 34, "rendimiento": 92, "pais": "Argentina"},
+    {"nombre": "Sofía",   "edad": 30, "rendimiento": 88, "pais": "Argentina"},
+    {"nombre": "Pedro",   "edad": 40, "rendimiento": 92, "pais": "Chile"},
+    {"nombre": "Carlos",  "edad": 22, "rendimiento": 78, "pais": "Chile"},
+    {"nombre": "Diego",   "edad": 29, "rendimiento": 85, "pais": "Chile"},
+    {"nombre": "Tomás",   "edad": 27, "rendimiento": 88, "pais": "Chile"},
+]
+
+empleados_ordenados = ordenar_empleados(empleados)
+empleados_por_pais = ordenar_x_pais(empleados_ordenados)
+mostrando_empleados =imprimiendo_empleados(empleados_por_pais)'''
+
+
+
+#Ejercicio similar al anterior elaborado por Claude para practicar las herramientas utilizadas en el mismo 
+
+'''Ejercicio 5: Organización de Inventario de una Tienda Online
+
+Trabajás en una tienda online que vende productos de varias categorías (Electrónica, Hogar, Ropa, etc.). Cada producto 
+es un diccionario con nombre, categoria, precio y stock.
+
+Tu tarea es:
+
+Ordenar los productos por precio de forma descendente.
+Para aquellos con el mismo precio, ordenar por stock de forma ascendente (para priorizar visualmente los que están por agotarse).
+Agrupar los productos por categoria, usando itertools.groupby (recordá lo que aprendiste: necesitás que las categorías queden 
+consecutivas antes de agrupar).
+Imprimir el resultado mostrando cada categoría y sus productos ordenados.
+
+Usá funciones lambda para las claves de ordenamiento y agrupamiento, igual que en el ejercicio anterior.'''
+from itertools import groupby
+def agrupar_productos(productos):
+    productos_agrupados=list(sorted(productos, key=lambda pro:(pro["categoria"],-pro["precio"], pro["stock"])))
+    return productos_agrupados
+
+def ordenar_categoria(productos_agrupados):
+    orden_categorico ={categoria:list(productos_categoria)for categoria,productos_categoria in groupby(productos_agrupados,key=lambda e:e["categoria"])}
+    return orden_categorico
+
+
+def mostrar_productos_ordenados(orden_categorico):
+    for categoria,productos_categoria in orden_categorico.items():
+        print(f"Categoria:{categoria}")
+        for producto in productos_categoria:
+            print(producto)
+
+productos = [
+    {"nombre": "Notebook",       "categoria": "Electrónica", "precio": 899, "stock": 12},
+    {"nombre": "Sofá 3 cuerpos", "categoria": "Hogar",        "precio": 650, "stock": 5},
+    {"nombre": "Campera",        "categoria": "Ropa",         "precio": 120, "stock": 30},
+    {"nombre": "Auriculares",    "categoria": "Electrónica",  "precio": 120, "stock": 40},
+    {"nombre": "Lámpara",        "categoria": "Hogar",        "precio": 45,  "stock": 18},
+    {"nombre": "Zapatillas",     "categoria": "Ropa",         "precio": 89,  "stock": 22},
+    {"nombre": "Smartphone",     "categoria": "Electrónica",  "precio": 899, "stock": 3},
+    {"nombre": "Silla",          "categoria": "Hogar",        "precio": 120, "stock": 15},
+    {"nombre": "Remera",         "categoria": "Ropa",         "precio": 120, "stock": 50},
+    {"nombre": "Mouse",          "categoria": "Electrónica",  "precio": 25,  "stock": 60},
+]
+
+
+ordenar_productos=agrupar_productos(productos)
+ordenar_por_categoria =ordenar_categoria(ordenar_productos)
+Imprimir_productos =mostrar_productos_ordenados(ordenar_por_categoria)
