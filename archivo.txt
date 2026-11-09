@@ -1,1 +1,1 @@
-"Creando conflictos para mergear"
+"Creando conflictos de merge"
