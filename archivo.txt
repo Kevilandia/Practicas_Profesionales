@@ -1,0 +1,2 @@
+"Hola estoy trabajando en git y github con el fin de resumir y culminar mis aprendizajes en los mismos
+motivo por el cual me creo este archivo de texto ,recuerda que la practica es la mejor teoria"
